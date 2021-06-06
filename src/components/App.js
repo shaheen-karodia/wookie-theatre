@@ -12,7 +12,6 @@ const App = () => {
   const fetchMoviesStatus = useSelector((state) => state.movies.status);
 
   useEffect(() => {
-    console.log("useEffect");
     if (fetchMoviesStatus === "idle") {
       dispatch(fetchMovies());
     }

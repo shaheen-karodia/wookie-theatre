@@ -5,6 +5,7 @@ import _ from "lodash";
 
 const initialState = {
   all_movies: {},
+  moviesByGenra: {},
   status: "idle",
   error: null,
 };
@@ -31,7 +32,10 @@ export const slice = createSlice({
     },
     [fetchMovies.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.all_movies = _.mapKeys(action.payload.movies, "slug");
+
+      const movies = action.payload.movies;
+      state.all_movies = _.mapKeys(movies, "slug");
+      state.moviesByGenra = createMovieByGeneraMap(movies);
     },
     [fetchMovies.rejected]: (state, action) => {
       state.status = "failed";
@@ -40,8 +44,21 @@ export const slice = createSlice({
   },
 });
 
-// export const { increment, decrement, incrementByAmount } = slice.actions;
+const createMovieByGeneraMap = (movies) => {
+  const map = {};
 
-// export const selectCount = (state) => state.counter.value;
+  movies.forEach((movie) => {
+    movie.genres.forEach((genre) => {
+      if (!map.hasOwnProperty(genre)) {
+        map[genre] = [];
+      }
+      map[genre].push(movie.slug);
+    });
+  });
+
+  return map;
+};
+
+// export const { increment, decrement, incrementByAmount } = slice.actions;
 
 export default slice.reducer;
