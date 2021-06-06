@@ -1,5 +1,54 @@
+$logowrapper-height: 45px;
+$search-wrapper-height: 30px;
+
 .top-navbar {
   background: #fff;
   border-bottom: 1px solid #e4e8ef;
   z-index: 1;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 30px;
+
+  .logo-wrapper {
+    height: $logowrapper-height;
+    display: flex;
+    align-items: flex-start;
+
+    .logo-icon {
+      height: $logowrapper-height;
+    }
+
+    .logo-text {
+      height: $logowrapper-height;
+    }
+  }
+
+  .search-wrapper {
+    border-radius: 25px;
+    min-width: 300px;
+    height: $search-wrapper-height;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #e4e8ef;
+
+    display: flex;
+    align-items: center;
+
+    .search-input {
+      height: $search-wrapper-height;
+      width: 100%;
+      border: none;
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    .search-icon {
+      height: $search-wrapper-height;
+      width: $search-wrapper-height;
+      padding: 6px;
+    }
+  }
 }
