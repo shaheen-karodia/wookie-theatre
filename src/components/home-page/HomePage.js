@@ -1,8 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
+import MovieCarousel from "./MovieCarousel";
 
 function HomePage(props) {
-  return <div>Home Page</div>;
+  return <MovieCarousel />;
 }
 
 HomePage.propTypes = {};
