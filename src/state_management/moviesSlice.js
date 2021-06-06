@@ -4,8 +4,8 @@ import { MOVIE_API_BASE_URI } from "../constant";
 import _ from "lodash";
 
 const initialState = {
-  all_movies: {},
-  moviesByGenra: {},
+  moviesBySlug: {},
+  movieSlugsByGenra: {},
   status: "idle",
   error: null,
 };
@@ -34,8 +34,8 @@ export const slice = createSlice({
       state.status = "succeeded";
 
       const movies = action.payload.movies;
-      state.all_movies = _.mapKeys(movies, "slug");
-      state.moviesByGenra = createMovieByGeneraMap(movies);
+      state.moviesBySlug = _.mapKeys(movies, "slug");
+      state.movieSlugsByGenra = getMovieSlugsByGenra(movies);
     },
     [fetchMovies.rejected]: (state, action) => {
       state.status = "failed";
@@ -44,7 +44,7 @@ export const slice = createSlice({
   },
 });
 
-const createMovieByGeneraMap = (movies) => {
+const getMovieSlugsByGenra = (movies) => {
   const map = {};
 
   movies.forEach((movie) => {
@@ -58,7 +58,5 @@ const createMovieByGeneraMap = (movies) => {
 
   return map;
 };
-
-// export const { increment, decrement, incrementByAmount } = slice.actions;
 
 export default slice.reducer;

@@ -6,35 +6,22 @@ import { useSelector } from "react-redux";
 const responsiveConfig = {
   desktop: {
     breakpoint: { max: 8000, min: 1024 },
-    items: 7,
-    slidesToSlide: 2,
+    items: 5,
+    slidesToSlide: 1,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1024, min: 0 },
     items: 2,
-    slidesToSlide: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
+    slidesToSlide: 1,
   },
 };
 
-const MovieCarousel = () => {
-  const movies = useSelector((state) => Object.values(state.movies.all_movies));
-
-  console.log("movies", movies);
-
+const MovieCarousel = ({ movies }) => {
   return (
-    <Carousel
-      containerClass="movie-carousel"
-      partialVisible
-      responsive={responsiveConfig}
-      draggable={false}
-    >
+    <Carousel responsive={responsiveConfig} draggable={false}>
       {movies.map((movie) => {
         return (
-          <img style={{ width: "70%", height: "100%" }} src={movie.poster} />
+          <img style={{ width: "95%", height: "100%" }} src={movie.poster} />
         );
       })}
     </Carousel>
