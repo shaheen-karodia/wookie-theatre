@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { MOVIE_API_BASE_URI } from "../constant";
+import _ from "lodash";
 
 const initialState = {
-  all_movies: [],
+  all_movies: {},
   status: "idle",
   error: null,
 };
@@ -30,7 +31,7 @@ export const slice = createSlice({
     },
     [fetchMovies.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.all_movies = action.payload;
+      state.all_movies = _.mapKeys(action.payload.movies, "slug");
     },
     [fetchMovies.rejected]: (state, action) => {
       state.status = "failed";
