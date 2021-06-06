@@ -1,11 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect } from "react";
 import HomePage from "./home-page/HomePage";
 import MovieDetailsPage from "./movie-details-page/MovieDetailsPage";
 import TopNavbar from "./top-navbar/TopNavbar";
 import { Switch, Route, Link } from "react-router-dom";
 
-function App(props) {
+import { useSelector, useDispatch } from "react-redux";
+import { fetchMovies } from "../state_management/moviesSlice";
+
+const App = () => {
+  const dispatch = useDispatch();
+  const fetchMoviesStatus = useSelector((state) => state.movies.status);
+
+  useEffect(() => {
+    if (fetchMoviesStatus === "idle") {
+      dispatch(fetchMovies());
+    }
+  }, [fetchMovies, dispatch]);
+
   return (
     <div>
       <TopNavbar />
@@ -16,12 +27,9 @@ function App(props) {
         <Route path="/movies/:id">
           <MovieDetailsPage />
         </Route>
-        {/* TODO 404 case */}
       </Switch>
     </div>
   );
-}
-
-App.propTypes = {};
+};
 
 export default App;
