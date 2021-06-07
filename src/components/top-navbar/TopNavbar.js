@@ -1,8 +1,6 @@
 import React from "react";
 import "./top-navbar.scss";
-import PropTypes from "prop-types";
-
-function TopNavbar(props) {
+function TopNavbar() {
   return (
     <div className="top-navbar">
       <div className="logo-wrapper">
@@ -35,7 +33,5 @@ function TopNavbar(props) {
     </div>
   );
 }
-
-TopNavbar.propTypes = {};
 
 export default TopNavbar;

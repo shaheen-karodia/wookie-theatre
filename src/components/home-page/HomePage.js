@@ -3,6 +3,7 @@ import MovieCarousel from "../movie-carousel/MovieCarousel";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMovies } from "../../state_management/moviesSlice";
 import "./home-page.scss";
+import StandardContainer from "../utilities/standard-container/StandardContainer";
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -17,7 +18,9 @@ function HomePage() {
   if (fetchMoviesStatus === "loading") return <div>Loading</div>;
   return (
     <div className="home-page">
-      <GenraCarousels />
+      <StandardContainer>
+        <GenraCarousels />
+      </StandardContainer>
     </div>
   );
 }
@@ -31,8 +34,8 @@ const GenraCarousels = () => {
   return Object.entries(movieSlugsByGenra).map(([genra, movieSlugs]) => {
     const movies = movieSlugs.map((slug) => moviesBySlug[slug]);
     return (
-      <div key={genra}>
-        {genra}
+      <div className="carousel-wrapper" key={genra}>
+        <div className="genra-title">{genra}</div>
         <MovieCarousel movies={movies} />
       </div>
     );

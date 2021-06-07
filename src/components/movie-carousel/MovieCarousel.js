@@ -1,7 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
-import { useSelector } from "react-redux";
+import "./movie-carousel.scss";
+import { Link } from "react-router-dom";
 
 const responsiveConfig = {
   desktop: {
@@ -21,7 +21,9 @@ const MovieCarousel = ({ movies }) => {
     <Carousel responsive={responsiveConfig} draggable={false}>
       {movies.map((movie) => {
         return (
-          <img style={{ width: "95%", height: "100%" }} src={movie.poster} />
+          <Link to={`/movies/${movie.slug}`} key={movie.slug}>
+            <img className="movie-carousel-item" src={movie.poster} />
+          </Link>
         );
       })}
     </Carousel>

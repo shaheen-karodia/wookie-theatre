@@ -1,0 +1,30 @@
+.movie-details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .poster {
+    height: 300px;
+    margin-right: 30px;
+  }
+  .meta-details-wrapper {
+    width: 100%;
+  }
+
+  .title-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .title {
+    margin-top: 0px;
+  }
+
+  .star-rating {
+    .star-item {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
