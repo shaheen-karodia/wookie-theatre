@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../movie-details/MovieDetails";
 import StandardContainer from "../utilities/standard-container/StandardContainer";
+import "./movie-details-page.scss";
 
 function MovieDetailsPage() {
   const dispatch = useDispatch();
@@ -22,9 +23,11 @@ function MovieDetailsPage() {
       return <div>Loading</div>;
     case "succeeded":
       return (
-        <StandardContainer>
-          <MovieDetails movie={moviesBySlug[id]} />
-        </StandardContainer>
+        <div className="movie-details-page">
+          <StandardContainer>
+            <MovieDetails movie={moviesBySlug[id]} />
+          </StandardContainer>
+        </div>
       );
 
     default:

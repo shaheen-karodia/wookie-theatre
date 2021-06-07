@@ -23,13 +23,13 @@ function SearchMovies() {
   return (
     <div className="search-movies">
       <AsyncSelect
-        cacheOptions
-        defaultOptions
         value={selectedValue}
         getOptionLabel={(e) => e.title}
         getOptionValue={(e) => e.slug}
         loadOptions={loadOptions}
         onChange={handleChange}
+        placeholder="Search Movie"
+        noOptionsMessage={() => "No movies found"}
       />
     </div>
   );
