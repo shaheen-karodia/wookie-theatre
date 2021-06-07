@@ -1,9 +1,11 @@
 import React from "react";
 import "./top-navbar.scss";
+import SearchMovie from "../search-movie/SearchMovie";
+
 function TopNavbar() {
   return (
     <div className="top-navbar">
-      <div className="logo-wrapper">
+      {/* <div className="logo-wrapper">
         <img
           className="logo-icon"
           src="/images/logo/chewie_icon.svg"
@@ -22,14 +24,10 @@ function TopNavbar() {
           src="/images/icons/search_icon.svg"
           alt="Search Icon"
         />
-        <input
-          className="search-input"
-          type="text"
-          placeholder="Search title..."
-          // value={search}
-          // onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
+       
+      </div> */}
+
+      <SearchMovie />
     </div>
   );
 }
