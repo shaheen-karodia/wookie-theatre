@@ -12,7 +12,6 @@ const onFetchMoviesSuccess = (state, action) => {
 
   const movies = action.payload.movies;
   state.moviesBySlug = _.mapKeys(movies, "slug");
-  state.movieSlugsByGenra = getMovieSlugsByGenra(movies);
 };
 
 const onFetchMoviesFailure = (state, action) => {
@@ -34,24 +33,8 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
 
 const initialState = {
   moviesBySlug: {},
-  movieSlugsByGenra: {},
   status: "idle",
   error: null,
-};
-
-const getMovieSlugsByGenra = (movies) => {
-  const map = {};
-
-  movies.forEach((movie) => {
-    movie.genres.forEach((genre) => {
-      if (!map.hasOwnProperty(genre)) {
-        map[genre] = [];
-      }
-      map[genre].push(movie.slug);
-    });
-  });
-
-  return map;
 };
 
 export const slice = createSlice({

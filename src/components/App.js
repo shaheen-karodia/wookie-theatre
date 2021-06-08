@@ -1,5 +1,5 @@
 import React from "react";
-import HomePage from "./home-page/HomePage";
+import BrowseMovies from "./browse-movies";
 import MovieDetails from "./movie-details";
 import TopNavbar from "./top-navbar/TopNavbar";
 import { Switch, Route } from "react-router-dom";
@@ -11,7 +11,7 @@ const App = () => {
       <TopNavbar />
       <StandardPage>
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={BrowseMovies} />
           <Route path="/movies/:id" component={MovieDetails} />
         </Switch>
       </StandardPage>
