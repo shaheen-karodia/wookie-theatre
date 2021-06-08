@@ -1,21 +1,24 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { MOVIE_API_BASE_URI } from "../constant";
+import apiEnumStates from "../enums/apiEnumStates";
 import _ from "lodash";
 
+const { IDLE, FAILED, SUCCEEDED, LOADING } = apiEnumStates;
+
 const onFetchMoviesPending = (state) => {
-  state.status = "loading";
+  state.status = LOADING;
 };
 
 const onFetchMoviesSuccess = (state, action) => {
-  state.status = "succeeded";
+  state.status = SUCCEEDED;
 
   const movies = action.payload.movies;
   state.moviesBySlug = _.mapKeys(movies, "slug");
 };
 
 const onFetchMoviesFailure = (state, action) => {
-  state.status = "failed";
+  state.status = FAILED;
   state.error = action.error.message;
 };
 
@@ -33,7 +36,7 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
 
 const initialState = {
   moviesBySlug: {},
-  status: "idle",
+  status: IDLE,
   error: null,
 };
 

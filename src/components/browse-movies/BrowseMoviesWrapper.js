@@ -2,22 +2,27 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMovies } from "../../state_management/moviesSlice";
 import BrowseMovies from "./BrowseMovies";
+import apiEnumStates from "../../enums/apiEnumStates";
+
+const { IDLE, FAILED, SUCCEEDED, LOADING } = apiEnumStates;
 
 function BrowseMoviesWrapper() {
   const dispatch = useDispatch();
   const fetchMoviesStatus = useSelector((state) => state.movies.status);
 
   useEffect(() => {
-    if (fetchMoviesStatus === "idle") {
+    if (fetchMoviesStatus === IDLE) {
       dispatch(fetchMovies());
     }
   }, [dispatch, fetchMoviesStatus]);
 
   switch (fetchMoviesStatus) {
-    case "loading":
+    case LOADING:
       return <div>Loading</div>;
-    case "succeeded":
+    case SUCCEEDED:
       return <BrowseMovies />;
+    case FAILED:
+      return <div>Error component</div>;
     default:
       return null;
   }

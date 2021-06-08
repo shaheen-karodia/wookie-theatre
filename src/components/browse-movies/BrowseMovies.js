@@ -19,7 +19,7 @@ const getMoviesByGenra = (movies) => {
 
 const MovieCarouselGroup = ({ genra, movies }) => {
   return (
-    <div className="carousel-wrapper" key={genra}>
+    <div className="carousel-wrapper">
       <div className="genra-title">{genra}</div>
       <MovieCarousel movies={movies} />
     </div>
@@ -34,7 +34,7 @@ const BrowseMovies = () => {
   return (
     <div className="browse-movies">
       {Object.entries(moviesByGenera).map(([genra, movies]) => {
-        return <MovieCarouselGroup genra={genra} movies={movies} />;
+        return <MovieCarouselGroup key={genra} genra={genra} movies={movies} />;
       })}
     </div>
   );

@@ -3,6 +3,9 @@ import { fetchMovies } from "../../state_management/moviesSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import MovieDetails from "./MovieDetails";
+import apiEnumStates from "../../enums/apiEnumStates";
+
+const { IDLE, FAILED, SUCCEEDED, LOADING } = apiEnumStates;
 
 const MovieDetailsWrapper = () => {
   const dispatch = useDispatch();
@@ -11,15 +14,17 @@ const MovieDetailsWrapper = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    if (fetchMoviesStatus === "idle") {
+    if (fetchMoviesStatus === IDLE) {
       dispatch(fetchMovies());
     }
-  }, [fetchMovies, dispatch, fetchMoviesStatus]);
+  }, [dispatch, fetchMoviesStatus]);
 
   switch (fetchMoviesStatus) {
-    case "loading":
-      return <div>Loading</div>;
-    case "succeeded":
+    case LOADING:
+      return <div>Loading component</div>;
+    case FAILED:
+      return <div>Error component</div>;
+    case SUCCEEDED:
       return <MovieDetails movie={moviesBySlug[id]} />;
     default:
       return null;

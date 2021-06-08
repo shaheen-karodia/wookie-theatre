@@ -24,7 +24,11 @@ const MovieCarousel = ({ movies }) => {
       {movies.map((movie) => {
         return (
           <Link to={`/movies/${movie.slug}`} key={movie.slug}>
-            <img className="movie-carousel-item" src={movie.poster} />
+            <img
+              className="movie-carousel-item"
+              src={movie.poster}
+              alt={movie.title}
+            />
           </Link>
         );
       })}
