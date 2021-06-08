@@ -9,12 +9,8 @@ const App = () => {
     <div>
       <TopNavbar />
       <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/movies/:id">
-          <MovieDetailsPage />
-        </Route>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/movies/:id" component={MovieDetailsPage} />
       </Switch>
     </div>
   );
