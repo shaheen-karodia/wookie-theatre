@@ -1,5 +1,5 @@
 import React from "react";
-import "./standard-page.scss";
+import "./StandardPage.scss";
 
 function StandardPage({ children }) {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AsyncSelect from "react-select/async";
 import axios from "axios";
-import { MOVIE_API_BASE_URI } from "../../../constant";
+import { MOVIE_API_BASE_URI } from "../../constant";
 import { useHistory } from "react-router-dom";
 
 const SearchMovies = () => {
