@@ -1,6 +1,6 @@
 import React from "react";
 import "./top-navbar.scss";
-import SearchMovie from "../search-movie/SearchMovie";
+import SearchMovie from "./search-movie/SearchMovie";
 import { Link } from "react-router-dom";
 
 const Logo = () => {

@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import AsyncSelect from "react-select/async";
 import axios from "axios";
-import { MOVIE_API_BASE_URI } from "../../constant";
-function SearchMovies() {
+import { MOVIE_API_BASE_URI } from "../../../constant";
+import { useHistory } from "react-router-dom";
+
+const SearchMovies = () => {
   const [selectedValue, setSelectedValue] = useState(null);
+  const history = useHistory();
 
   const handleChange = (value) => {
     setSelectedValue(value);
+
+    if (value) {
+      history.push(`/movies/${value.slug}`);
+    }
   };
 
   const loadOptions = async (inputValue) => {
@@ -21,18 +28,17 @@ function SearchMovies() {
   };
 
   return (
-    <div className="search-movies">
-      <AsyncSelect
-        value={selectedValue}
-        getOptionLabel={(e) => e.title}
-        getOptionValue={(e) => e.slug}
-        loadOptions={loadOptions}
-        onChange={handleChange}
-        placeholder="Search Movie"
-        noOptionsMessage={() => "No movies found"}
-      />
-    </div>
+    <AsyncSelect
+      value={selectedValue}
+      getOptionLabel={(e) => e.title}
+      getOptionValue={(e) => e.slug}
+      loadOptions={loadOptions}
+      onChange={handleChange}
+      isClearable
+      placeholder="Search Movie"
+      noOptionsMessage={() => "No movies found"}
+    />
   );
-}
+};
 
 export default SearchMovies;

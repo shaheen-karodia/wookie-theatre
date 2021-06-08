@@ -13,7 +13,7 @@ function HomePage() {
     if (fetchMoviesStatus === "idle") {
       dispatch(fetchMovies());
     }
-  }, [fetchMovies, dispatch, fetchMoviesStatus]);
+  }, [dispatch, fetchMoviesStatus]);
 
   if (fetchMoviesStatus === "loading") return <div>Loading</div>;
   return (
