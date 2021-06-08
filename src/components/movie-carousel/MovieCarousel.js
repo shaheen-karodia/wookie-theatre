@@ -5,14 +5,16 @@ import { Link } from "react-router-dom";
 
 const responsiveConfig = {
   desktop: {
-    breakpoint: { max: 8000, min: 1024 },
+    breakpoint: { max: 8000, min: 601 },
     items: 5,
-    slidesToSlide: 1,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 0 },
+    breakpoint: { max: 600, min: 376 },
+    items: 3,
+  },
+  phone: {
+    breakpoint: { max: 375, min: 0 },
     items: 2,
-    slidesToSlide: 1,
   },
 };
 

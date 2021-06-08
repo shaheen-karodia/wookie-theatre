@@ -3,8 +3,6 @@ import MovieCarousel from "../movie-carousel/MovieCarousel";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMovies } from "../../state_management/moviesSlice";
 import "./home-page.scss";
-import StandardContainer from "../utilities/standard-container/StandardContainer";
-
 function HomePage() {
   const dispatch = useDispatch();
   const fetchMoviesStatus = useSelector((state) => state.movies.status);
@@ -18,9 +16,7 @@ function HomePage() {
   if (fetchMoviesStatus === "loading") return <div>Loading</div>;
   return (
     <div className="home-page">
-      <StandardContainer>
-        <GenraCarousels />
-      </StandardContainer>
+      <GenraCarousels />
     </div>
   );
 }
