@@ -18,17 +18,29 @@ $search-wrapper-height: 30px;
     height: $logowrapper-height;
     display: flex;
     align-items: flex-start;
+    margin-right: 20px;
+    @media (min-width: 600px) {
+      margin-right: 45px;
+    }
 
     .logo-icon {
       height: $logowrapper-height;
+      width: $logowrapper-height;
     }
 
     .logo-text {
+      display: none;
       height: $logowrapper-height;
+      @media (min-width: 600px) {
+        display: block;
+      }
     }
   }
 
   .search-wrapper {
-    min-width: 300px;
+    width: 100%;
+    @media (min-width: 600px) {
+      width: 300px;
+    }
   }
 }

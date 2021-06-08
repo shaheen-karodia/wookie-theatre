@@ -3,29 +3,36 @@ import "./top-navbar.scss";
 import SearchMovie from "../search-movie/SearchMovie";
 import { Link } from "react-router-dom";
 
-function TopNavbar() {
+const Logo = () => {
+  return (
+    <div className="logo-wrapper">
+      <Link to="/">
+        <img
+          className="logo-icon"
+          src="/images/logo/chewie_icon.svg"
+          alt="Chewie Icon"
+        />
+      </Link>
+      <Link to="/">
+        <img
+          className="logo-text"
+          src="/images/logo/logo_text.svg"
+          alt="Wookie Movies"
+        />
+      </Link>
+    </div>
+  );
+};
+
+const TopNavbar = () => {
   return (
     <div className="top-navbar">
-      <Link to={`/`}>
-        <div className="logo-wrapper">
-          <img
-            className="logo-icon"
-            src="/images/logo/chewie_icon.svg"
-            alt="Chewie Icon"
-          />
-          <img
-            className="logo-text"
-            src="/images/logo/logo_text.svg"
-            alt="Wookie Movies"
-          />
-        </div>
-      </Link>
-
+      <Logo />
       <div className="search-wrapper">
         <SearchMovie />
       </div>
     </div>
   );
-}
+};
 
 export default TopNavbar;
